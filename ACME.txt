@@ -1,0 +1,15 @@
+-- Add your MySql Statements to this txt file
+
+CREATE DATABASE Acme;
+USE Acme;
+
+--  Cheryl enter statements below:
+
+
+--  Chris enter statements below:
+
+
+--  Michael enter statements below:
+
+
+--  Riko enter statements below:
