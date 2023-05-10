@@ -4,6 +4,37 @@ CREATE DATABASE Acme;
 USE Acme;
 
 --  Cheryl enter statements below:
+CREATE TABLE Inventory(
+	productID INT UNSIGNED NOT NULL,
+	quantity INT UNSIGNED,
+	updateDate DATE,
+	PRIMARY KEY (productID),
+	FOREIGN KEY (productID) REFERENCES Product(productID),
+	ON DELETE RESTRICT,
+	ON UPDATE CASCADE
+);
+
+CREATE TABLE TransactionLineItem(
+	transactionID INT UNSIGNED NOT NULL,
+	productID INT UNSIGNED,
+	quantity INT UNSIGNED,
+	unitPrice DECIMAL(6,2) UNSIGNED NOT NULL,
+	PRIMARY KEY (transactionID, productID),
+	FOREIGN KEY (transactionID) REFERENCES Transaction(transactionID),
+	ON DELETE RESTRICT,
+	ON UPDATE CASCADE
+	FOREIGN KEY (productID) REFERENCES Product(productID),
+	ON DELETE RESTRICT,
+	ON UPDATE CASCADE
+);
+
+CREATE TABLE LineItemPrice(
+	transactionID INT UNSIGNED NOT NULL,
+	productID INT UNSIGNED NOT NULL,
+	price DECIMAL(6,2) UNSIGNED NOT NULL,
+	PRIMARY KEY (transactionID, productID),
+	FOREIGN KEY (transactionID, productID)
+);
 
 
 --  Chris enter statements below:
