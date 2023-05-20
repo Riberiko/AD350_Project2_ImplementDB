@@ -46,6 +46,29 @@ CREATE TABLE LineItemPrice(
 
 
 --  Michael enter statements below:
+CREATE TABLE Review(
+	reviewID INT UNSIGNED NOT NULL,
+	productID INT UNSIGNED NOT NULL,
+	userID INT UNSIGNED NOT NULL,
+	score INT UNSIGNED NOT NULL,
+	reviewDate DATE NOT NULL,
+	PRIMARY KEY (reviewID),
+	FOREIGN KEY (userID) REFERENCES USER(userID),
+	ON DELETE RESTRICT,
+	ON UPDATE CASCADE
+	FOREIGN KEY (productID) REFERENCES Product(productID)
+	ON DELETE RESTRICT,
+	ON UPDATE CASCADE
+);
 
+CREATE TABLE Product(
+	productID INT UNSIGNED NOT NULL,
+	productName VARCHAR(50) NOT NULL,
+	currentMSRP DECIMAL(6,2) UNSIGNED NOT NULL,
+	costToProduct DECIMAL(6,2) UNSIGNED NOT NULL,
+	releaseDate DATE NOT NULL,
+	description VARCHAR(100) NOT NULL,
+	PRIMARY KEY (productID)
+);
 
 --  Riko enter statements below:
