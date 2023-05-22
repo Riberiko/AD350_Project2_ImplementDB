@@ -71,3 +71,31 @@ CREATE TABLE UserCreditCard (
 
 
 --  Riko enter statements below:
+
+CREATE TABLE UserAddress (
+    addressID INT NOT NULL AUTO_INCREMENT,
+    UserID INT UNSIGNED NOT NULL,
+    street VARCHAR(320) NOT NULL,
+    city VARCHAR(100) NOT NULL,
+    state CHAR(2) NOT NULL,
+    zip SMALLINT UNSIGNED NOT NULL,
+    phone INT UNIQUE,
+    PRIMARY KEY (addressID),
+    FOREIGN KEY (UserID) REFERENCES User(UserID)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE
+);
+
+CREATE TABLE Transaction (
+    transactionID INT NOT NULL AUTO_INCREMENT UNIQUE,
+    userID INT UNSIGNED,
+    totalCost DECIMAL(6,2) UNSIGNED,
+    transactionDate DATETIME NOT NULL,
+    addressID INT NOT NULL,
+    paymentID INT UNSIGNED NOT NULL,
+    PRIMARY KEY (transactionID),
+    FOREIGN KEY (userID) REFERENCES User(UserID)
+        ON UPDATE CASCADE
+        ON DELETE SET NULL
+);
+
