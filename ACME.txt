@@ -44,6 +44,28 @@ CREATE TABLE LineItemPrice(
 
 --  Chris enter statements below:
 
+CREATE TABLE User (
+	userID INT UNSIGNED AUTO_INCREMENT,
+	email VARCHAR(320) NOT NULL UNIQUE,
+	password VARCHAR(50) NOT NULL,
+	firstName VARCHAR(100) NOT NULL,
+	LastName VARCHAR(100) NOT NULL,
+	PRIMARY KEY (userID)
+);
+
+CREATE TABLE UserCreditCard (
+	paymentID INT UNSIGNED AUTO_INCREMENT,
+	userID INT UNSIGNED NOT NULL,
+	cardNumber CHAR(16) NOT NULL,
+	expMonth SMALLINT NOT NULL,
+	expYear SMALLINT NOT NULL,
+	PRIMARY KEY (paymentID),
+	FOREIGN KEY (userID) 
+	REFERENCES User(userID) 
+	ON UPDATE CASCADE 
+	ON DELETE CASCADE
+);
+
 
 --  Michael enter statements below:
 
