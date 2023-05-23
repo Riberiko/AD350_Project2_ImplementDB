@@ -70,8 +70,7 @@ CREATE TABLE UserAddress (
     PRIMARY KEY (addressID),
     FOREIGN KEY (UserID) REFERENCES User(UserID)
 	ON DELETE RESTRICT
-        ON UPDATE CASCADE
-        
+        ON UPDATE CASCADE 
 );
 
 CREATE TABLE Transaction (
