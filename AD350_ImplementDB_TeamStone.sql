@@ -54,8 +54,7 @@ CREATE TABLE UserCreditCard (
 	expMonth CHAR(2) NOT NULL,
 	expYear CHAR(4) NOT NULL,
 	PRIMARY KEY (paymentID),
-	FOREIGN KEY (userID) 
-	REFERENCES User(userID) 
+	FOREIGN KEY (userID) REFERENCES User(userID) 
 		ON DELETE RESTRICT
 		ON UPDATE CASCADE 
 );
@@ -70,7 +69,7 @@ CREATE TABLE UserAddress (
     phone CHAR(10) NOT NULL,
     PRIMARY KEY (addressID),
     FOREIGN KEY (UserID) REFERENCES User(UserID)
-		ON DELETE RESTRICT
+	ON DELETE RESTRICT
         ON UPDATE CASCADE
         
 );
@@ -86,13 +85,12 @@ CREATE TABLE Transaction (
     FOREIGN KEY (userID) REFERENCES User(UserID)
         ON DELETE RESTRICT
         ON UPDATE CASCADE,
-	FOREIGN KEY (addressID) REFERENCES UserAddress(addressID)
+    FOREIGN KEY (addressID) REFERENCES UserAddress(addressID)
         ON DELETE RESTRICT
         ON UPDATE CASCADE,
-	FOREIGN KEY (paymentID) REFERENCES UserCreditCard(paymentID)
+    FOREIGN KEY (paymentID) REFERENCES UserCreditCard(paymentID)
         ON DELETE RESTRICT
         ON UPDATE CASCADE
-        
 );
 
 CREATE TABLE TransactionLineItem (
