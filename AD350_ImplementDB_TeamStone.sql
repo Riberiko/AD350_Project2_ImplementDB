@@ -39,7 +39,7 @@ CREATE TABLE Review (
 
 CREATE TABLE Inventory (
 	productID INT UNSIGNED NOT NULL,
-	quantity INT UNSIGNED NOT NULL,
+	quantity SMALLINT UNSIGNED NOT NULL,
 	updateDate DATE NOT NULL,
 	PRIMARY KEY (productID),
 	FOREIGN KEY (productID) REFERENCES Product(productID)
@@ -95,7 +95,7 @@ CREATE TABLE Transaction (
 CREATE TABLE TransactionLineItem (
 	transactionID INT UNSIGNED NOT NULL,
 	productID INT UNSIGNED NOT NULL,
-	quantity INT UNSIGNED NOT NULL,
+	quantity SMALLINT UNSIGNED NOT NULL,
 	unitPrice DECIMAL(6,2) NOT NULL,
 	PRIMARY KEY (transactionID, productID),
 	FOREIGN KEY (transactionID) REFERENCES Transaction(transactionID)
